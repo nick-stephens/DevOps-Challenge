@@ -6,7 +6,6 @@
     - name: Provision a set of instances
       ec2:
          key_name: devops
-         group: webserver
          region: us-west-2
          instance_type: t2.micro
          image: "ami-5189a661"
