@@ -2,7 +2,11 @@
   hosts: localhost
   connection: local
   tasks:
+    - name: Get instance info
+      action: ec2_facts
+      register: ec2
+      
     - name: Terminate instances that were previously launched
       ec2:
-        state: 'running'
-        region: us-west-2
+        state: 'present'
+        instance_ids: '{{ ec2.instance_ids }}'
