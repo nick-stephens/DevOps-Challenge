@@ -1,4 +1,4 @@
-- hosts: ec2
+- hosts: localhost
   gather_facts: True
   connection: local
   vars: 
