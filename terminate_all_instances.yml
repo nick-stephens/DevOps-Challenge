@@ -1,8 +1,18 @@
-- name: Terminate all instances
-  hosts: localhost
+- hosts: localhost
+  gather_facts: True
   connection: local
+  vars: 
+    - region: 'us-west-2'
   tasks:
-    - name: Terminate instances that were previously launched
-      ec2:
-        state: 'running'
-        region: us-west-2
+    - name: Gather EC2 facts
+      local_action: ec2_facts
+
+    - debug: var=hostvars[inventory_hostname]
+    - debug: msg="{{ hostvars[inventory_hostname]['ec2_id'] }}"
+
+    - name: Terminate instances 
+      local_action: ec2
+        state='absent'
+        instance_ids='{{ ec2_id }}'
+        region='{{ region }}'
+        wait=True
