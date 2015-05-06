@@ -5,3 +5,4 @@
     - name: Terminate instances that were previously launched
       ec2:
         state: 'running'
+        region: us-west-2
