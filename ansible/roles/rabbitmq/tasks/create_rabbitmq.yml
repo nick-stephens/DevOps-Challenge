@@ -1,18 +1,12 @@
-- hosts: localhost
-  connection: local
-  gather_facts: False
-
-  tasks:
-    - name: Provision a set of instances
-      ec2:
-         key_name: devops
-         region: us-west-2
-         instance_type: t2.micro
-         image: "ami-5189a661"
-         wait: true
-         exact_count: 1
-         count_tag:
-            type: queue
-         instance_tags:
-            type: queue
-      register: ec2
+- name: Provision a set of instances
+  ec2:
+     key_name: devops
+     region: us-west-2
+     instance_type: t2.micro
+     image: "ami-5189a661"
+     wait: true
+     exact_count: 1
+     count_tag:
+        type: queue
+     instance_tags:
+        type: queue
