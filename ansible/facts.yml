@@ -1,0 +1,9 @@
+
+- name: Create servers for site
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: Gather facts
+    action: ec2_facts
