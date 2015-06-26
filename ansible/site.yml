@@ -1,1 +1,12 @@
 
+- name: Create servers for site
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - include: roles/webserver/tasks/create_webserver.yml
+    - include: roles/rabbitmq/tasks/create_rabbitmq.yml
+    - include: roles/postgres/tasks/create_postgresql.yml
+    - include: roles/haproxy/tasks/create_haproxy.yml
+    - include: roles/cassandra/tasks/create_cassandra.yml
