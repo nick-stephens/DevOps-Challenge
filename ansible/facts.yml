@@ -6,4 +6,4 @@
 
   tasks:
     - name: Gather facts
-    action: ec2_facts
+    local_action: ec2_facts
