@@ -1,7 +1,6 @@
 
 - name: Create servers for site
   hosts: localhost
-  connection: local
 
   tasks:
     - name: Gather facts
