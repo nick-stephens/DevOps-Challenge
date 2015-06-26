@@ -5,7 +5,7 @@
   gather_facts: False
 
   tasks:
-    - include: roles/webserver/tasks/create_webserver.yml
+    - include: roles/webserver/tasks/create_web_server.yml
     - include: roles/rabbitmq/tasks/create_rabbitmq.yml
     - include: roles/postgres/tasks/create_postgresql.yml
     - include: roles/haproxy/tasks/create_haproxy.yml
