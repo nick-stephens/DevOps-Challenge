@@ -1,6 +1,4 @@
-
-- name: Create servers for site
-  hosts: localhost
+- hosts: tag_type_webserver
 
   tasks:
     - name: Gather facts
