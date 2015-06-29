@@ -21,10 +21,12 @@
     
   - name: Run common setup script on web servers
     shell: ../Install-Scripts/common.sh
+    sudo: yes
     with_items: webservers.instances
     
   - name: Run setup scripts on web servers
     shell: ../Install-Scripts/webapp.sh
+    sudo: yes
     with_items: webservers.instances
     
   - name: Provision rabbit mq servers
@@ -43,10 +45,12 @@
     
   - name: Run common setup script on queue servers
     shell: ../Install-Scripts/common.sh
+    sudo: yes
     with_items: queueservers.instances
     
   - name: Run web app setup script
     shell: ../Install-Scripts/webapp.sh
+    sudo: yes
     with_items: queueservers.instances
     
   - name: Provision a set of instances
@@ -65,10 +69,12 @@
     
   - name: Run common setup script on postgres servers
     shell: ../Install-Scripts/common.sh
+    sudo: yes
     with_items: postgresservers.instances
     
   - name: Run postgres setup script
     shell: ../Install-Scripts/postgresql.sh
+    sudo: yes
     with_items: postgresservers.instances
     
   - name: Provision a set of instances
@@ -87,10 +93,12 @@
     
   - name: Run common setup script on proxy servers
     shell: ../Install-Scripts/common.sh
+    sudo: yes
     with_items: proxyservers.instances
     
   - name: Run proxy setup script
     shell: ../Install-Scripts/haproxy.sh
+    sudo: yes
     with_items: proxyservers.instances
     
   - name: Provision a set of instances
@@ -109,9 +117,11 @@
     
   - name: Run common setup script on cassandra servers
     shell: ../Install-Scripts/common.sh
+    sudo: yes
     with_items: cassandraservers.instances
     
   - name: Run cassandra setup script
     shell: ../Install-Scripts/cassanda.sh
+    sudo: yes
     with_items: cassandraservers.instances
     
