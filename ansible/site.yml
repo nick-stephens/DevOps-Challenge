@@ -18,7 +18,12 @@
       instance_tags:
         type: webserver
     register: webservers
-  - name: Provision a set of instances
+    
+  - name: Run setup scripts on web servers
+    shell: ../../Install-Scripts/webapp.sh
+    with_items: webservers.instances
+    
+  - name: Provision rabbit mq servers
     ec2:
       key_name: devops
       region: us-west-2
@@ -31,6 +36,15 @@
       instance_tags:
         type: queue
     register: queueservers
+    
+  - name: Run common setup script on web servers
+    shell: ../../Install-Scripts/common.sh
+    with_items: queueservers.instances
+    
+  - name: Run web app setup script
+    shell: ../../Install-Scripts/webapp.sh
+    with_items: queueservers.instances
+    
   - name: Provision a set of instances
     ec2:
       key_name: devops
@@ -44,6 +58,15 @@
       instance_tags:
         type: postgres
     register: postgresservers
+    
+  - name: Run common setup script on postgres servers
+    shell: ../../Install-Scripts/common.sh
+    with_items: postgresservers.instances
+    
+  - name: Run postgres setup script
+    shell: ../../Install-Scripts/postgresql.sh
+    with_items: postgresservers.instances
+    
   - name: Provision a set of instances
     ec2:
       key_name: devops
@@ -57,6 +80,15 @@
       instance_tags:
         type: haproxy
     register: proxyservers
+    
+  - name: Run common setup script on proxy servers
+    shell: ../../Install-Scripts/common.sh
+    with_items: proxyservers.instances
+    
+  - name: Run proxy setup script
+    shell: ../../Install-Scripts/haproxy.sh
+    with_items: proxyservers.instances
+    
   - name: Provision a set of instances
     ec2:
       key_name: devops
@@ -70,3 +102,12 @@
       instance_tags:
         type: cassandra
     register: cassandraservers
+    
+  - name: Run common setup script on cassandra servers
+    shell: ../../Install-Scripts/common.sh
+    with_items: cassandraservers.instances
+    
+  - name: Run cassandra setup script
+    shell: ../../Install-Scripts/cassanda.sh
+    with_items: cassandraservers.instances
+    
