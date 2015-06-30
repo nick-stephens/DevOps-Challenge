@@ -18,110 +18,22 @@
       instance_tags:
         type: webserver
     register: webservers
-    
+  
+  - name: apt-get update the server
+    apt: update_cache=yes
+    with_items: webservers.instances
+  
+  - name: apt-get install git
+    apt: name=git-core state=latest
+    with_items: webservers.instances
+  
+  - name: use git to pull scripts
+    git: repo=git@github.com:TeamOSO/DevOps-Challenge/Install-Scripts.git clone=yes
+    with_items: webservers.instances
+  
   - name: Run common setup script on web servers
-    shell: ../Install-Scripts/common.sh
-    sudo: yes
+    shell: ./Install-Scripts/common.sh
     with_items: webservers.instances
     
-  - name: Run setup scripts on web servers
-    shell: ../Install-Scripts/webapp.sh
-    sudo: yes
-    with_items: webservers.instances
-    
-  - name: Provision rabbit mq servers
-    ec2:
-      key_name: devops
-      region: us-west-2
-      instance_type: t2.micro
-      image: "ami-5189a661"
-      wait: true
-      exact_count: 1
-      count_tag:
-        type: queue
-      instance_tags:
-        type: queue
-    register: queueservers
-    
-  - name: Run common setup script on queue servers
-    shell: ../Install-Scripts/common.sh
-    sudo: yes
-    with_items: queueservers.instances
-    
-  - name: Run web app setup script
-    shell: ../Install-Scripts/webapp.sh
-    sudo: yes
-    with_items: queueservers.instances
-    
-  - name: Provision a set of instances
-    ec2:
-      key_name: devops
-      region: us-west-2
-      instance_type: t2.micro
-      image: "ami-5189a661"
-      wait: true
-      exact_count: 1
-      count_tag:
-        type: postgres
-      instance_tags:
-        type: postgres
-    register: postgresservers
-    
-  - name: Run common setup script on postgres servers
-    shell: ../Install-Scripts/common.sh
-    sudo: yes
-    with_items: postgresservers.instances
-    
-  - name: Run postgres setup script
-    shell: ../Install-Scripts/postgresql.sh
-    sudo: yes
-    with_items: postgresservers.instances
-    
-  - name: Provision a set of instances
-    ec2:
-      key_name: devops
-      region: us-west-2
-      instance_type: t2.micro
-      image: "ami-5189a661"
-      wait: true
-      exact_count: 1
-      count_tag:
-        type: haproxy
-      instance_tags:
-        type: haproxy
-    register: proxyservers
-    
-  - name: Run common setup script on proxy servers
-    shell: ../Install-Scripts/common.sh
-    sudo: yes
-    with_items: proxyservers.instances
-    
-  - name: Run proxy setup script
-    shell: ../Install-Scripts/haproxy.sh
-    sudo: yes
-    with_items: proxyservers.instances
-    
-  - name: Provision a set of instances
-    ec2:
-      key_name: devops
-      region: us-west-2
-      instance_type: t2.micro
-      image: "ami-5189a661"
-      wait: true
-      exact_count: 1
-      count_tag:
-        type: cassandra
-      instance_tags:
-        type: cassandra
-    register: cassandraservers
-    
-  - name: Run common setup script on cassandra servers
-    shell: ../Install-Scripts/common.sh
-    sudo: yes
-    with_items: cassandraservers.instances
-    
-  - name: Run cassandra setup script
-    shell: ../Install-Scripts/cassanda.sh
-    sudo: yes
-    with_items: cassandraservers.instances
+  
     
