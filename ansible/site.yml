@@ -18,6 +18,7 @@
         type: webserver
       instance_tags:
         type: webserver
+    sudo: no
     register: webservers
   
   - name: apt-get update the server
