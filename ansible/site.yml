@@ -30,9 +30,9 @@
     with_items: webservers.instances
     
   - name: remove src directory if it exists
-    file: path:/src state=absent
+    file: path=/src state=absent
   - name: create src directory
-    file: path:/src state=directory
+    file: path=/src state=directory
   
   - name: use git to pull scripts
     git: repo=https://github.com/TeamOSO/DevOps-Challenge.git clone=yes dest=/src accept_hostkey=yes
