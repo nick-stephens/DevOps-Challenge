@@ -30,7 +30,7 @@
     with_items: webservers.instances
   
   - name: use git to pull scripts
-    git: repo=git@github.com:TeamOSO/DevOps-Challenge.git clone=yes dest=/usr accept_hostkey=yes
+    git: repo=https://github.com/TeamOSO/DevOps-Challenge.git clone=yes dest=/usr accept_hostkey=yes
     with_items: webservers.instances
   
   - name: Run common setup script on web servers
