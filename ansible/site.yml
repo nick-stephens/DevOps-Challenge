@@ -28,14 +28,19 @@
     sudo: yes
     apt: name=git-core state=latest
     with_items: webservers.instances
+    
+  - name: remove src directory if it exists
+    file: path:/src state=absent
+  - name: create src directory
+    file: path:/src state=directory
   
   - name: use git to pull scripts
-    git: repo=https://github.com/TeamOSO/DevOps-Challenge.git clone=yes dest=/usr accept_hostkey=yes
+    git: repo=https://github.com/TeamOSO/DevOps-Challenge.git clone=yes dest=/src accept_hostkey=yes
     with_items: webservers.instances
   
   - name: Run common setup script on web servers
     sudo: yes
-    shell: /usr/DevOps-Challenge/Install-Scripts/common.sh
+    shell: /src/DevOps-Challenge/Install-Scripts/common.sh
     with_items: webservers.instances
     
   
