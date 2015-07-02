@@ -1,0 +1,5 @@
+- hosts: tag_type_webserver
+  gather_facts: no
+  tasks:
+  - name: ping all hosts
+    ping:
