@@ -9,7 +9,7 @@
     - name: copy the generated public key to an accessible location for the next play
       shell: cp ~ansible_ssh_user/.ssh/id_rsa.pub /tmp/ansible_ssh_user.pub
 
-- hosts: webserver
+- hosts: tag_type_webserver
   sudo: yes
   gather_facts: no
   tasks:
