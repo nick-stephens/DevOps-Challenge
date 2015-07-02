@@ -1,6 +1,10 @@
 - name: Running scripts to configure the web server
   hosts: tag_type_webserver
   tasks:
+    - name: List directory
+      sudo: yes
+      shell: ls
+      
     - name: Run common setup script on web servers
       sudo: yes
       shell: /src/Install-Scripts/common.sh
