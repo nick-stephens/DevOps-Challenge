@@ -7,4 +7,4 @@
       apt: update_cache=yes
       
     - name: Run common setup script on web servers
-      script: /src/Install-Scripts/common.sh
+      script: ../Install-Scripts/common.sh
