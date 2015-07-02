@@ -1,5 +1,0 @@
-- hosts: tag_type_webserver
-
-  tasks:
-    - name: Gather facts
-    action: ec2_facts
