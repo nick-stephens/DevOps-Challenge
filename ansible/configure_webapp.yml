@@ -1,5 +1,5 @@
 - name: Running scripts to configure the web server
-  hosts: tag_type_webserver
+  hosts: ec2-52-11-79-82.us-west-2.compute.amazonaws.com
   tasks:
     - name: List directory
       sudo: yes
