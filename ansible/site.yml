@@ -20,6 +20,14 @@
         type: webserver
     sudo: no
     register: webservers
+    
+  - name: Adding new instance to host group
+    local_action: add_host hostname=${item.public_dns_name} groupname=webservers
+    with_items: webservers.instances
+    
+  - name: Waiting for SSH to come up
+    local_action: wait_for host=${item.public_dns_name} port=22 delay=10 timeout=120 state=started
+    with_items: webservers.instances
   
   - name: apt-get update the server
     apt: update_cache=yes
