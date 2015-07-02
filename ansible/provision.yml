@@ -1,8 +1,5 @@
 
 - name: provision servers
-  sudo: yes
-  gather_facts: False
-  
   ec2:
     key_name: devops
     region: us-west-2
