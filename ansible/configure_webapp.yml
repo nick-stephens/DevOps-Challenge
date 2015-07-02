@@ -1,6 +1,6 @@
 - name: Running scripts to configure the web server
   hosts: tag_type_webserver
-  sudo: yes
+  sudo: no
   gather_facts: False
   tasks:
     - name: List directory
