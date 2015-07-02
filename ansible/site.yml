@@ -28,21 +28,3 @@
   - name: Waiting for SSH to come up
     local_action: wait_for host=${item.public_dns_name} port=22 delay=10 timeout=120 state=started
     with_items: webservers.instances
-  
-  - name: apt-get update the server
-    apt: update_cache=yes
-    with_items: webservers.instances
-  
-  - name: apt-get install git
-    apt: name=git-core state=latest
-    with_items: webservers.instances
-    
-  - name: remove src directory if it exists
-    file: path=/src state=absent
-    
-  - name: create src directory
-    file: path=/src state=directory
-  
-  - name: use git to pull scripts
-    git: repo=https://github.com/TeamOSO/DevOps-Challenge.git clone=yes dest=/src accept_hostkey=yes
-    with_items: webservers.instances
