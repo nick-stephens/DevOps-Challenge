@@ -5,8 +5,8 @@
   gather_facts: False
   
   tasks:
-  	- include: provision.yml type=t2.micro ami="ami-7fe9d34f" count=1 tag=webserver
-  	
-  	- hosts: tag_type_webserver
-  	  roles:
-  	    - common
+    - include: provision.yml type=t2.micro ami="ami-7fe9d34f" count=1 tag=webserver
+    
+    - hosts: tag_type_webserver
+      roles:
+        - common
