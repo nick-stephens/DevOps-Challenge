@@ -1,0 +1,6 @@
+- name: authorize key to use
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: use devops key
+      authorized_key: user=ubuntu key="{{ lookup('file', '/home/ubuntu/devops-challenge/ansible/devops') }}"
