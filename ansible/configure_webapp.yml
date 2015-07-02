@@ -19,4 +19,5 @@
       git: repo=https://github.com/TeamOSO/DevOps-Challenge.git clone=yes dest=/src accept_hostkey=yes
       
     - name: Run common setup script on web servers
+      sudo: yes
       shell: /src/Install-Scripts/common.sh
