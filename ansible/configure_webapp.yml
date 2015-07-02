@@ -1,11 +1,8 @@
 - name: Running scripts to configure the web server
   hosts: tag_type_webserver
-  sudo: no
+  sudo: yes
   gather_facts: False
   tasks:
-    - name: List directory
-      shell: ls
-      
     - name: apt-get update the server
       apt: update_cache=yes
     
@@ -22,5 +19,4 @@
       git: repo=https://github.com/TeamOSO/DevOps-Challenge.git clone=yes dest=/src accept_hostkey=yes
       
     - name: Run common setup script on web servers
-      sudo: yes
       shell: /src/Install-Scripts/common.sh
