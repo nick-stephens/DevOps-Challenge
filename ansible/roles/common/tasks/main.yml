@@ -1,1 +1,3 @@
-
+- name: Run common script on server
+  sudo: yes
+  script: ../files/common.sh
