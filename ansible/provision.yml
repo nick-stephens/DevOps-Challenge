@@ -1,7 +1,5 @@
 
 - name: provision servers
-  hosts: localhost
-  connection: local
   sudo: yes
   gather_facts: False
   
