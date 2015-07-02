@@ -10,8 +10,8 @@
     ec2:
       key_name: devops
       region: us-west-2
-      instance_type: {{ instance_type }}
-      image: {{ ami_id }}
+      instance_type: {{ type }}
+      image: {{ ami }}
       wait: true
       count: {{ count }}
       instance_tags:
