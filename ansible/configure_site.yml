@@ -3,3 +3,32 @@
   sudo: yes
   roles:
     - common
+    - webserver
+    
+- name: configure rabbit mq
+  hosts: tag_type_rabbitmq
+  sudo: yes
+  roles:
+    - common
+    - rabbitmq
+    
+- name: configure haproxy
+  hosts: tag_type_haproxy
+  sudo: yes
+  roles:
+    - common
+    - haproxy
+    
+- name: configure postgres
+  hosts: tag_type_postgres
+  sudo: yes
+  roles:
+    - common
+    - postgres
+    
+- name: configure cassandra
+  hosts: tag_type_cassandra
+  sudo: yes
+  roles:
+    - common
+    - cassandra
