@@ -1,13 +1,3 @@
-
-- name: Provision a set of instances
-  ec2:
-     key_name: devops
-     region: us-west-2
-     instance_type: t2.micro
-     image: "ami-5189a661"
-     wait: true
-     exact_count: 1
-     count_tag:
-        type: webserver
-     instance_tags:
-        type: webserver
+- name: Run web server script on server
+  sudo: yes
+  script: ../files/webapp.sh
