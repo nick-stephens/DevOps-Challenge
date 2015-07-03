@@ -1,0 +1,3 @@
+- name: Run cassandra script on server
+  sudo: yes
+  script: ../files/cassandra.sh
