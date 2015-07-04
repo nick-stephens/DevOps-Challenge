@@ -8,5 +8,5 @@
     wait: false
     count: "{{ count }}"
     instance_tags:
-      type: "{{ tag }}"
-      type: "reddit"
+      "{{ tag }}"
+      "reddit"
