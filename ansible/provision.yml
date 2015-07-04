@@ -5,7 +5,7 @@
     region: us-west-2
     instance_type: "{{ type }}"
     image: "{{ ami }}"
-    wait: false
+    wait: "{{ wait }}"
     count: "{{ count }}"
     instance_tags:
       type: "{{ tag }}"
