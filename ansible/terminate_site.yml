@@ -5,5 +5,5 @@
     - name: Terminate {{ ec2_id }} in {{ aws_region }}
       ec2:
         state: 'absent'
-        region: '{{aws_region}}'
+        region: us-west-2
         instance_ids: '{{ec2_id}}'
