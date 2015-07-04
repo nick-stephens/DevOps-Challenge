@@ -2,8 +2,9 @@
   hosts: tag_type_reddit
   gather_facts: false
   tasks:
-    - name: Terminate {{ ec2_id }} in {{ aws_region }}
-      ec2:
-        state: 'absent'
-        region: us-west-2
-        instance_ids: '{{ec2_id}}'
+    - name: 
+      local_action:
+          module: ec2
+          state: 'absent'
+          region: us-west-2
+          instance_ids: '{{ec2_id}}'
