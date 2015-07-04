@@ -1,5 +1,5 @@
 
-- name: provision servers
+- name: provision "{{ tag }}" servers
   ec2:
     key_name: devops
     region: us-west-2
