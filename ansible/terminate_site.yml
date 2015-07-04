@@ -1,0 +1,4 @@
+- name: terminate all reddit instances
+  hosts: tag_type_reddit
+  ec2:
+    state: 'absent'
