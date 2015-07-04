@@ -1,6 +1,9 @@
 - name: terminate all reddit instances
   hosts: tag_type_reddit
-  
+  gather_facts: false
   tasks:
-    ec2:
-      state: 'absent'
+    - name: Terminate {{ ec2_id }} in {{ aws_region }}
+      ec2:
+        state: 'absent'
+        region: '{{aws_region}}'
+        instance_ids: '{{ec2_id}}'
