@@ -1,5 +1,5 @@
 - name: terminate all reddit instances
-  hosts: tag_type_reddit
+  hosts: tag_reddit
   gather_facts: false
   tasks:
     - name: 
