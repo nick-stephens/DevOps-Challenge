@@ -4,8 +4,8 @@
   gather_facts: False
   
   tasks:
+    - include: provision.yml type="t2.micro" ami="ami-7fe9d34f" count=1 tag="haproxy" wait:"false"
     - include: provision.yml type="t2.micro" ami="ami-7fe9d34f" count=1 tag="webserver" wait:"false"
     - include: provision.yml type="t2.micro" ami="ami-7fe9d34f" count=1 tag="rabbitmq" wait:"false"
-    - include: provision.yml type="t2.micro" ami="ami-7fe9d34f" count=1 tag="haproxy" wait:"false"
     - include: provision.yml type="t2.micro" ami="ami-7fe9d34f" count=1 tag="postgres" wait:"false"
     - include: provision.yml type="t2.micro" ami="ami-7fe9d34f" count=1 tag="cassandra" wait:"true"
